@@ -88,6 +88,6 @@ ocr-web-app/
 
 📜 License
 This project is free to use. If you find it useful, please consider giving credit by linking to my LinkedIn profile.
-![Linkedin](https://www.linkedin.com/in/raj-guru-432680303/)
+![](https://www.linkedin.com/in/raj-guru-432680303/)
 
-***Created by Raj Guru***
+##Created by Raj Guru
