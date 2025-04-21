@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="upload-card card">
+            <div class="card-header text-center">
+                <h2><i class="bi bi-cloud-arrow-up"></i> Image to Text Converter</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    <div class="mb-4 text-center">
+                        <label for="fileInput" class="form-label d-block">
+                            <div class="upload-icon-container">
+                                <i class="bi bi-cloud-arrow-up-fill"></i>
+                            </div>
+                            <span class="btn btn-outline-primary">
+                                <i class="bi bi-folder2-open"></i> Choose Image File
+                            </span>
+                        </label>
+                        <div id="previewContainer" class="preview-container">
+                            <img id="previewImage" style="display: none;">
+                            <div id="noPreview" class="text-center py-4">
+                                <p class="mb-1">No file selected</p>
+                                <small class="text-muted">or drag & drop here</small>
+                            </div>
+                        </div>
+                        <input class="form-control d-none" type="file" name="file" id="fileInput" required>
+                        <div id="fileName" class="small text-muted mt-2"></div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <label for="lang" class="form-label">Language</label>
+                            <select class="form-select" name="lang" id="lang">
+                                <option value="eng">English</option>
+                                <option value="hin">Hindi (हिंदी)</option>
+                                <option value="fra">French</option>
+                                <option value="spa">Spanish</option>
+                                <option value="deu">German</option>
+                                <option value="chi_sim">Chinese</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="psm" class="form-label">Processing Mode</label>
+                            <select class="form-select" name="psm" id="psm">
+                                <option value="3">Automatic (Default)</option>
+                                <option value="6">Single Block (Better for Hindi)</option>
+                                <option value="11">Sparse Text</option>
+                                <option value="12">Sparse Text with OSD</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-magic"></i> Extract Text
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

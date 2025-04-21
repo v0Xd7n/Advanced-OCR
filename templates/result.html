@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0"><i class="bi bi-card-text"></i> OCR Results</h3>
+        </div>
+        
+        <div class="card-body">
+            <!-- Enhanced Preview Section -->
+            <div class="preview-wrapper">
+                <div class="image-preview">
+                    {% if thumb_path %}
+                    <img src="{{ url_for('static', filename='uploads/' + thumb_path.split('/')[-1]) }}" 
+                         alt="Uploaded Image Preview">
+                    <div class="preview-controls">
+                        <button title="Zoom In" onclick="zoomImage(1.2)"><i class="bi bi-zoom-in"></i></button>
+                        <button title="Zoom Out" onclick="zoomImage(0.8)"><i class="bi bi-zoom-out"></i></button>
+                        <button title="Rotate" onclick="rotateImage()"><i class="bi bi-arrow-clockwise"></i></button>
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div class="text-preview">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5>Extracted Text</h5>
+                        <div>
+                            <span class="badge bg-info me-2">{{ lang|upper }}</span>
+                            <span class="badge bg-secondary">PSM {{ psm }}</span>
+                        </div>
+                    </div>
+                    <div class="p-3 bg-light rounded {% if lang == 'hin' %}hindi-text{% endif %}" 
+                         id="textResult" style="white-space: pre-wrap;">{{ text }}</div>
+                </div>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+                <div>
+                    <button onclick="copyToClipboard()" class="btn btn-success me-2">
+                        <i class="bi bi-clipboard"></i> Copy Text
+                    </button>
+                    <button onclick="downloadText()" class="btn btn-outline-primary me-2">
+                        <i class="bi bi-download"></i> Download
+                    </button>
+                </div>
+                <a href="{{ url_for('index') }}" class="btn btn-primary">
+                    <i class="bi bi-arrow-repeat"></i> New Scan
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // Image manipulation functions
+    function zoomImage(factor) {
+        const img = document.querySelector('.image-preview img');
+        const currentScale = parseFloat(img.style.transform.replace('scale(', '')) || 1;
+        img.style.transform = `scale(${currentScale * factor})`;
+    }
+    
+    function rotateImage() {
+        const img = document.querySelector('.image-preview img');
+        const currentRotate = parseInt(img.style.transform.replace('rotate(', '')) || 0;
+        img.style.transform = `rotate(${currentRotate + 90}deg)`;
+    }
+    
+    // Text handling functions
+    function copyToClipboard() {
+        const text = document.getElementById('textResult').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            showToast('Text copied to clipboard!', 'success');
+        });
+    }
+    
+    function downloadText() {
+        const text = document.getElementById('textResult').innerText;
+        const blob = new Blob([text], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'ocr_result.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.className = `toast show position-fixed bottom-0 end-0 m-3 bg-${type} text-white`;
+        toast.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">${message}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+    }
+</script>
+{% endblock %}
