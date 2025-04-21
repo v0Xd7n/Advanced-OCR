@@ -55,8 +55,15 @@ A powerful Optical Character Recognition (OCR) web application that extracts tex
   ```
 4.**Install Tesseract OCR**
 Windows: Download from [UB Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
-Linux: ```sudo apt install tesseract-ocr```
-Mac: ```brew install tesseract```
+
+Linux: 
+ ```bash
+ sudo apt install tesseract-ocr
+ ```
+Mac:
+ ```bash
+brew install tesseract
+```
 
 5.**Run the application**
 ```python app.py```
@@ -79,11 +86,11 @@ ocr-web-app/
 ```
 
 🔮 Future Improvements
-      PDF text extraction support
+    **PDF text extraction support
       Batch processing for multiple images
       Cloud storage integration (Google Drive/Dropbox)
       AI-powered text correction
-      Enhanced language support
+      Enhanced language support**
 
 
 ## 📜 License
