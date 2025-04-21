@@ -1,6 +1,6 @@
 # Advanced OCR Web Application
 
-![OCR Demo]![image](https://github.com/user-attachments/assets/f15ac036-238d-43df-8286-8b1c2c466ba4)
+OCR Demo![image](https://github.com/user-attachments/assets/f15ac036-238d-43df-8286-8b1c2c466ba4)
  <!-- Replace with actual screenshot -->
 
 A powerful Optical Character Recognition (OCR) web application that extracts text from images with multi-language support, built with Python Flask and Tesseract OCR.
@@ -54,7 +54,7 @@ A powerful Optical Character Recognition (OCR) web application that extracts tex
   pip install -r requirements.txt
   ```
 4.**Install Tesseract OCR**
-Windows: Download from ![UB Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
+Windows: Download from [UB Mannheim](https://github.com/UB-Mannheim/tesseract/wiki)
 Linux: ```sudo apt install tesseract-ocr```
 Mac: ```brew install tesseract```
 
@@ -86,8 +86,14 @@ ocr-web-app/
       Enhanced language support
 
 
-📜 License
-This project is free to use. If you find it useful, please consider giving credit by linking to my LinkedIn profile.
-![](https://www.linkedin.com/in/raj-guru-432680303/)
+## 📜 License
 
-##Created by Raj Guru
+This project is open-source and free to use. If you find it helpful, I'd appreciate if you could:
+
+⭐ Star this repository  
+🔗 Connect with me on [LinkedIn](https://www.linkedin.com/in/raj-guru-432680303/)  
+💻 Check out my other projects
+
+---
+
+**Created by [Raj Guru](https://www.linkedin.com/in/raj-guru-432680303/)**
